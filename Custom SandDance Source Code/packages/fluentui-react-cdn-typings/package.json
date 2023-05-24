@@ -1,0 +1,24 @@
+{
+  "name": "@msrvida/fluentui-react-cdn-typings",
+  "version": "1.0.2",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/SandDance.git",
+    "directory": "packages/fluentui-react-cdn-typings"
+  },
+  "scripts": {
+    "eslint": "eslint -c ../../.eslintrc.json --fix ./*.d.ts",
+    "test": "tsc index.d.ts --lib es6 --skipLibCheck true"
+  },
+  "keywords": [],
+  "author": "",
+  "dependencies": {
+    "@fluentui/react": "^7.150.0"
+  },
+  "peerDependencies": {
+    "@types/react": "^16.9.34"
+  },
+  "license": "MIT"
+}

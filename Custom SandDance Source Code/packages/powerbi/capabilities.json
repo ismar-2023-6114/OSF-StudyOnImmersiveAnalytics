@@ -1,0 +1,75 @@
+{
+    "dataRoles": [
+        {
+            "displayName": "Values",
+            "name": "values",
+            "kind": "GroupingOrMeasure"
+        }
+    ],
+    "objects": {
+        "general": {
+            "displayName": "General",
+            "displayNameKey": "formattingGeneral",
+            "properties": {
+                "filter": {
+                    "type": {
+                        "filter": true
+                    }
+                }
+            }
+        },
+        "sandDanceMainSettings": {
+            "displayName": "SandDance",
+            "properties": {
+                "showchrome": {
+                    "displayName": "Show chrome",
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "darktheme": {
+                    "displayName": "Dark theme",
+                    "type": {
+                        "bool": true
+                    }
+                }
+            }
+        },
+        "sandDanceConfig": {
+            "properties": {
+                "insightJSON": {
+                    "type": {
+                        "text": true
+                    }
+                },
+                "snapshotsJSON": {
+                    "type": {
+                        "text": true
+                    }
+                },
+                "tooltipExclusionsJSON": {
+                    "type": {
+                        "text": true
+                    }
+                }
+            }
+        }
+    },
+    "dataViewMappings": [
+        {
+            "table": {
+                "rows": {
+                    "for": {
+                        "in": "values"
+                    },
+                    "dataReductionAlgorithm": {
+                        "window": {
+                            "count": 30000
+                        }
+                    }
+                }
+            }
+        }
+    ],
+    "suppressDefaultTitle": true
+}

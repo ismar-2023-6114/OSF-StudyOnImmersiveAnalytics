@@ -1,0 +1,30 @@
+{
+  "name": "@msrvida/sanddance-embed",
+  "version": "3.0.0",
+  "description": "Embeddable SandDance Explorer.",
+  "browser": "dist/umd/sanddance-embed.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/SandDance.git",
+    "directory": "packages/sanddance-embed"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "eslint": "eslint -c ../../.eslintrc.json --fix ./src/**/*.ts*",
+    "build-css": "sass ./src/css/sanddance-embed.scss ./dist/css/sanddance-embed.css",
+    "build-typescript": "tsc -p .",
+    "build:sanddance-core": "npm run build-css && npm run build-typescript"
+  },
+  "dependencies": {
+    "@msrvida/sanddance-explorer": "^3"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.7",
+    "@msrvida/fluentui-react-cdn-typings": "*"
+  },
+  "author": "",
+  "license": "MIT"
+}

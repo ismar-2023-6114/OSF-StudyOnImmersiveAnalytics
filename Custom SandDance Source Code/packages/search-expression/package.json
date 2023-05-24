@@ -1,0 +1,27 @@
+{
+  "name": "@msrvida/search-expression",
+  "version": "1.0.1",
+  "description": "Search expression parser.",
+  "main": "dist/es6/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/SandDance.git",
+    "directory": "packages/search-expression"
+  },
+  "types": "dist/es6/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "eslint": "eslint -c ../../.eslintrc.json --fix ./src/**/*.ts*",
+    "watch-typescript": "tsc -p . -w",
+    "build-typescript": "tsc -p .",
+    "build:sanddance-core": "npm run build-typescript"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@msrvida/chart-types": "^1",
+    "vega-typings": "0.21.0"
+  }
+}

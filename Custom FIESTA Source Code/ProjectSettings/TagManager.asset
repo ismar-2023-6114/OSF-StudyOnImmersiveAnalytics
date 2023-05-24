@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - View
+  - Chart
+  - ChartRaycastCollider
+  - MenuButton
+  - PhysicsMenuButton
+  - SPLOMButton
+  - TaskText
+  - DummyAvatar
+  - DummyVisualisation
+  - DummyPanel
+  - ExcludeTeleport
+  - projectile
+  - FxTemporaire
+  - TeleportIgnore
+  - DisplaySurface
+  - Panel
+  - PanelCollider
+  - Dashboard
+  - DashboardCollider
+  - DisplayWall
+  - Line
+  - Marker
+  - Visualisation
+  - Cube
+  - Table
+  - StandardChart
+  - DisplayScreen
+  - Replay
+  - Floor
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Snap Plane
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

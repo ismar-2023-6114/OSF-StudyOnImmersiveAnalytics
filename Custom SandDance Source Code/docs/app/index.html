@@ -1,0 +1,162 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SandDance</title>
+    <link rel="stylesheet" type="text/css" href="css/sanddance-app.css">
+    <link rel="stylesheet" type="text/css" href="css/sanddance-app-site.css">
+    <link rel="shortcut icon" href="../favicon.ico" />
+</head>
+
+<body>
+    <a class="sanddance-app-static-content" id="mel_house" data-display-name="Melbourne Housing" data-type="csv"
+    href="../sample-data/Melbourne_v2.csv"></a>
+    <a class="sanddance-app-static-content" id="lisbon_airbnb" data-display-name="Lisbon AirBnB" data-type="csv"
+    href="../sample-data/Airbnb_Lisbon_v3.csv"></a>
+    <!-- link to JSON files so we can get a url from the bundler -->
+    
+    
+    
+    <a class="sanddance-app-static-content" id="cereal" data-display-name="Cereal" data-type="csv"
+        href="../sample-data/cereal.csv"></a>
+    
+    <a class="sanddance-app-static-content" id="demovote" data-display-name="Demo Vote" data-type="tsv"
+        href="../sample-data/demovote.tsv"></a>
+    <a class="sanddance-app-static-content" id="titanic" data-display-name="Titanic" data-type="tsv"
+        href="../sample-data/titanicmaster.tsv"></a>
+
+    <script>
+        function setTheme(darkTheme) {
+            localStorage.setItem('theme', darkTheme ? 'Dark' : 'Light');
+        }
+        var darkTheme = localStorage.getItem('theme') === 'Dark';
+        var insights = {
+            "cereal": {
+                "columns": {
+                    "uid": "none",
+                    "x": "none",
+                    "y": "none",
+                    "color": "none"
+                },
+                "chart": "scatterplot",
+                "view": "2d"
+            },
+            "mel_house": {
+                "columns": {
+                    "uid": "Id",
+                    "x": "none",
+                    "y": "none",
+                    "color": "none"
+                },
+                "chart": "scatterplot",
+                "view": "2d"
+            },
+            "lisbon_airbnb": {
+                "columns": {
+                    "uid": "Id",
+                    "x": "none",
+                    "y": "none",
+                    "color": "none"
+                },
+                "chart": "scatterplot",
+                "view": "2d"
+            },
+            "titanic": {
+                "columns": {
+                    "uid": "Name",
+                    "x": "Age",
+                    "y": "TicketCost",
+                    "color": "Survived",
+                    "z": "Class",
+                },
+                "scheme": "dual_redgreen",
+                "chart": "scatterplot",
+                "view": "3d"
+            },
+            "demovote": {
+                "columns": {
+                    "uid": "Id",
+                    "x": "Longitude",
+                    "y": "Latitude",
+                    "color": "Obama",
+                    "z": "Education",
+                    "sort": "State"
+                },
+                "scheme": "redblue",
+                "chart": "scatterplot",
+                "view": "2d",
+                "colorBin": "quantize"
+            }
+        };
+        var options = {
+            "*": {
+                "chartPrefs": {
+                    "*": {
+                        "*": {
+                            "*": {
+                                "signalValues": {
+                                    "RoleColor_BinCountSignal": 7
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "mel_house":{},
+            "lisbon_airbnb":{},
+            "titanic": {
+                "chartPrefs": {
+                    "barchart": {
+                        "color": {
+                            "Gender": {
+                                "scheme": "set2"
+                            }
+                        }
+                    }
+                }
+            },
+            "demovote": {
+                "chartPrefs": {
+                    "*": {
+                        "color": {
+                            "Winner": {
+                                "scheme": "dual_bluered"
+                            }
+                        }
+                    },
+                    "stacks": {
+                        "*": {
+                            "*": {
+                                "signalValues": {
+                                    "RoleX_BinsSignal": 30,
+                                    "RoleY_BinsSignal": 30
+                                }
+                            }
+                        }
+                    }
+                },
+                "tooltipExclusions": ["Id", "Latitude", "Longitude"]
+            }
+        };
+    </script>
+
+    <main id="app"></main>
+
+    <footer>
+        {% include footer-links.html %}
+    </footer>
+
+    <script src="../external/js/react.development.js" crossorigin=""></script>
+    <script src="../external/js/react-dom.development.js" crossorigin=""></script>
+    <script src="js/sanddance-app.js"></script>
+
+    <script src="../scripts/delete-elements.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+{
+  "name": "@msrvida/sanddance-react",
+  "version": "3.0.1",
+  "description": "SandDance visualization canvas React component",
+  "main": "dist/es6/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/SandDance.git",
+    "directory": "packages/sanddance-react"
+  },
+  "types": "dist/es6/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "eslint": "eslint -c ../../.eslintrc.json --fix ./src/**/*.ts*",
+    "docs": "typedoc src/index.ts -out ../../docs/docs/sanddance-react/v3 --theme ../../typedoc/theme --excludePrivate --gitRevision master",
+    "watch-typescript": "tsc -p . -w",
+    "build-typescript": "tsc -p .",
+    "build-css": "sass ./src/css/sanddance-react.scss ./dist/css/sanddance-react.css",
+    "build:sanddance-core": "npm run build-typescript && node ../../scripts/version.js && npm run build-css",
+    "watch-css": "sass ./src/css/sanddance-react.scss ./dist/css/sanddance-react.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@msrvida/sanddance": "^3",
+    "just-compare": "^1.3.0"
+  },
+  "peerDependencies": {
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.7",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}

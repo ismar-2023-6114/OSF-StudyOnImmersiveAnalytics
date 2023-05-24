@@ -1,0 +1,162 @@
+{
+  "name": "@msrvida/sanddance-app",
+  "private": true,
+  "version": "3.0.0",
+  "scripts": {
+    "eslint": "eslint -c ../../.eslintrc.json --fix ./src/**/*.ts*",
+    "deploy": "npm run bundle && node ./scripts/deploy.js",
+    "build-typescript": "tsc -p .",
+    "watch-typescript": "tsc -p . -w",
+    "build-css": "sass ./src/css/sanddance-app.scss ./dist/css/sanddance-app.css",
+    "build:sanddance-core": "npm run build-typescript && npm run bundle && npm run build-css",
+    "bundle": "parcel build ./dist/es6/index.js --no-autoinstall ",
+    "start": "parcel serve ./test/index.html --port 8085 --open --no-autoinstall --no-hmr",
+
+    
+    "my-build": "npm run build:sanddance-core"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.7",
+    "@msrvida/fluentui-react-cdn-typings": "^1",
+    "vega-typings": "0.21.0"
+  },
+  "targets": {
+    "main": false,
+    "types": false,
+    "umd": {
+      "distDir": "./dist/umd",
+      "optimize": false,
+      "scopeHoist": false,
+      "sourceMap": false,
+      "includeNodeModules": {
+        "react": false,
+        "react-dom": false
+      }
+    }
+  },
+  "umd": "./dist/umd/sanddance-app.js",
+  "alias": {
+    "react": "./alias/react-external.js",
+    "react-dom": "./alias/react-dom-external.js"
+  },
+  "dependencies": {
+    "@deck.gl/core": "8.3.7",
+    "@deck.gl/layers": "8.3.7",
+    "@luma.gl/core": "8.3.1",
+    "@fluentui/react": "^7.150.0",
+    "@msrvida/sanddance-explorer": "^3",
+    "vega": "5.20"
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

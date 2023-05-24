@@ -1,0 +1,46 @@
+{
+  "name": "@msrvida/sanddance-specs",
+  "version": "1.4.4",
+  "description": "SandDance Vega specification generator.",
+  "main": "dist/es6/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/SandDance.git",
+    "directory": "packages/sanddance-specs"
+  },
+  "types": "dist/es6/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "eslint": "eslint -c ../../.eslintrc.json --fix ./src/**/*.ts*",
+    "docs": "typedoc src/index.ts -out ../../docs/docs/sanddance-specs/v1 --theme ../../typedoc/theme --excludePrivate --gitRevision master",
+    "watch-typescript": "tsc -p . -w",
+    "build-typescript": "tsc -p .",
+    "build:sanddance-core": "npm run build-typescript",
+    "bundle": "rollup -c",
+    "deploy": "parcel build ./uitest/sanddance-specs.ts",
+    "test2": "node -r esm ./test/perf.js"
+  },
+  "umd": "../../docs/tests/sanddance-specs/v1/js/sanddance-specs.js",
+  "targets": {
+    "umd": {
+      "distDir": "../../docs/tests/sanddance-specs/v1/js",
+      "includeNodeModules": {},
+      "optimize": false,
+      "scopeHoist": false,
+      "sourceMap": false
+    }
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@msrvida/chart-types": "^1",
+    "@msrvida/search-expression": "^1",
+    "d3-color": "^1.4.0",
+    "vega-typings": "0.21.0"
+  },
+  "devDependencies": {
+    "vega": "5.20"
+  }
+}

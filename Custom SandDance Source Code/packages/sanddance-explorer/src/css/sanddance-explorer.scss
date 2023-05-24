@@ -1,0 +1,235 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT license.
+@import "../../node_modules/@msrvida/sanddance-react/dist/css/sanddance-react";
+@import "color";
+@import "columnMap";
+@import "dataItem";
+@import "dataIndex";
+@import "dataScope";
+@import "group";
+@import "note";
+@import "palette";
+@import "search";
+@import "scrollable";
+@import "sidebar";
+@import "snapshots";
+@import "history";
+@import "topbar";
+
+//settings
+$sidetab-width: 50px;
+$toolbar-width: 300px;
+$toolbar-margin: 12px;
+$layout-margin-left: $sidetab-width;
+$layout-margin-right: 150px; //room for legend
+
+@include topbar($toolbar-margin: $toolbar-margin, $toolbar-width: $toolbar-width, $sidetab-width: $sidetab-width);
+@include group($margin: $toolbar-margin, $border-color: $toolbar-border, $bg-color: $toolbar-bg);
+@include sidebar($bg-color: $toolbar-bg, $dark-bg-color: $dark-toolbar-bg, $toolbar-margin: $toolbar-margin, $toolbar-width: $toolbar-width, $sidetab-width: $sidetab-width);
+@include dataScope($toolbar-margin: $toolbar-margin, $toolbar-width: $toolbar-width, $sidetab-width: $sidetab-width);
+@include dataItem($border-color: $toolbar-border-light, $dark-border-color: $dark-toolbar-border-light);
+@include dataIndex();
+@include scrollable();
+@include search();
+@include snapshots();
+@include history();
+@include note();
+@include columnMap();
+
+.sanddance-dialog {
+    ul {
+        margin: 0;
+    }
+    section {
+        margin-top: 1em;
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+    .tip {
+        font-style: italic;
+    }
+}
+
+.sanddance-explorer {
+    display: grid;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 13px;
+    grid-template-rows: 0fr auto;
+    &.dark-theme {
+        background-color: black;
+        canvas {
+            background-color: black;
+        }
+    }
+}
+
+.sanddance-main {
+    display: grid;
+    position: relative;
+    transition: grid-template-columns 350ms cubic-bezier(.4, 0, .2, 1);
+    .loading {
+        grid-row-end: span 2;
+        position: relative;
+        .ms-Spinner {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+        }
+    }
+    .sanddance-view {
+        display: grid;
+        position: relative;
+        margin-left: $sidetab-width;
+    }
+    .sanddance-layout-unpinned, .sanddance-layout-pinned {
+        position: absolute;
+        top: 0;
+        left: $layout-margin-left;
+        right: $layout-margin-right;
+        bottom: 0;
+    }
+    &.hide-legend {
+        .sanddance-layout-unpinned, .sanddance-layout-pinned {
+            right: 0;
+        }
+    }
+    .sanddance-layout-pinned {
+        left: $toolbar-width;
+    }
+    .sanddance-ReactViewer {
+        position: absolute;
+        top: 0;
+        left: $layout-margin-left - $layout-margin-right;   //oversize canvas to align center
+        bottom: 0;
+        right: 0;
+    }
+    &.hide-legend {
+        .sanddance-ReactViewer {
+            left: 0;
+        }
+    }
+    &.show-center {
+        .sanddance-layout-unpinned, .sanddance-layout-pinned {
+            background: linear-gradient(to right,
+                transparent 49%,
+                rgba(255, 0, 255, 0.2),
+                transparent 51%
+            );
+            background-color: rgba(0, 255, 255, 0.1);
+        }
+    }
+    &.pinned {
+        grid-template-columns: $toolbar-width auto;
+        grid-template-areas: "side main";
+        .sanddance-view {
+            grid-area: main;
+            margin-left: 0;
+        }
+        .loading {
+            grid-area: main;
+            grid-row-end: unset;
+        }
+        .sanddance-slidePanel {
+            grid-area: side;
+        }
+        &.closed {
+            grid-template-columns: 0 auto;
+            .sanddance-view {
+                margin-left: $sidetab-width;
+            }
+        }
+    }
+    span.ms-layer {
+        display: none;  //keep dialogs from occupying the grid when toolbar is floating
+    }
+}
+
+#sanddance-vega-spec {
+    border: 1px inset;
+    max-height: 20em;
+    overflow: scroll;
+}
+
+.sanddance-panel {
+    top: 5em;
+    bottom: unset;
+    overflow-y: unset;
+    padding-right: 1em;
+    padding-top: 32px;
+    h4,
+    .sanddance-vegaControls,
+    .sanddance-unitControls {
+        display: none;
+    }
+}
+
+.sanddance-main.hide-legend .sanddance-panel {
+    display: none;
+}
+
+.sanddance-panel-tools {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.sanddance-legend {
+    min-width: 54px;
+}
+
+.sanddance-explanation {
+    font-size: smaller;
+    font-style: italic;
+    margin-bottom: 1em;
+    .fieldname,
+    .fieldtype {
+        font-style: italic;
+    }
+}
+
+.sanddance-signal {
+    margin-top: 1em;
+}
+
+.sanddance-legend {
+    th {
+        color: #005a9e;
+        cursor: pointer;
+        &:hover {
+            background-color: rgba(43, 136, 216, (1/3));    // one-third opacity background
+        }
+    }
+    .legend-row:hover {
+        background-color: $highlight-color;
+        color: #fff;
+    }
+}
+
+.sanddance-dataExporter {
+    margin-top: 1em;
+}
+
+.sanddance-form-separate {
+    margin-top: 1em;
+}
+
+.dark-theme {
+    .sanddance-dialog {
+        a {
+            color: #00b4f0;
+        }
+    }
+    .sanddance-panel {
+        background-color: #000;
+        color: #fff;
+    }
+    .sanddance-legend {
+        th {
+            color: #3ac5f3;
+            &:hover {
+                color: #009ed3;
+            }
+        }
+    }
+}

@@ -1,0 +1,60 @@
+{
+  "name": "@msrvida/sanddance-explorer",
+  "version": "3.2.0",
+  "description": "SandDance data exploration React component.",
+  "main": "dist/es6/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/SandDance.git",
+    "directory": "packages/sanddance-explorer"
+  },
+  "types": "dist/es6/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "eslint": "eslint -c ../../.eslintrc.json --fix ./src/**/*.ts*",
+    "docs": "typedoc src/index.ts -out ../../docs/docs/sanddance-explorer/v3 --theme ../../typedoc/theme --excludePrivate --gitRevision master",
+    "build-typescript": "tsc -p .",
+    "watch-typescript": "tsc -p . -w",
+    "build-css": "sass ./src/css/sanddance-explorer.scss ./dist/css/sanddance-explorer.css",
+    "watch-css": "sass ./src/css/sanddance-explorer.scss ./dist/css/sanddance-explorer.css --watch",
+    "bundle": "parcel build ./bundle/umd.js",
+    "deploy": "node ./scripts/deploy.js",
+    "prebuild:sanddance-core": "node ./scripts/prebuild.js",
+    "build:sanddance-core": "npm run build-typescript && node ../../scripts/version.js && npm run bundle && npm run build-css",
+
+    "my-build": "npm run build:sanddance-core"
+  },
+  "targets": {
+    "main": false,
+    "types": false,
+    "umd": {
+      "distDir": "./dist/umd",
+      "optimize": false,
+      "sourceMap": false,
+      "includeNodeModules": {
+        "react": false,
+        "react-dom": false
+      }
+    }
+  },
+  "umd": "./dist/umd/sanddance-explorer.js",
+  "devDependencies": {
+    "@types/d3-format": "^1.3.1",
+    "vega-typings": "0.21.0"
+  },
+  "dependencies": {
+    "@msrvida/chart-recommender": "^3",
+    "@msrvida/fluentui-react-cdn-typings": "^1",
+    "@msrvida/sanddance-react": "^3",
+    "d3-format": "^1.3.2"
+  },
+  "peerDependencies": {
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.7",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "license": "MIT"
+}

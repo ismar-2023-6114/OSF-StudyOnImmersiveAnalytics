@@ -1,0 +1,59 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '14.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm i -g npm@7
+  displayName: 'Install npm 7'
+
+- script: |
+    npm install
+    npm run bootstrap
+  displayName: 'npm install'
+
+- task: ComponentGovernanceComponentDetection@0
+  inputs:
+    scanType: 'Register'
+    verbosity: 'Verbose'
+    alertWarningLevel: 'High'
+
+- script: |
+    npm -v
+  displayName: 'npm version'
+
+- script: |
+    npm run build:sanddance-core
+  displayName: 'npm build:sanddance-core'
+
+- script: |
+    npm run build:sanddance-integration
+  displayName: 'npm build:sanddance-integration'
+
+- script: |
+    npm run build:sanddance-integration-python
+  displayName: 'npm build:sanddance-integration-python'
+
+- script: |
+    npm test
+  displayName: 'npm test'
+
+- script: |
+    npm run docs
+  displayName: 'generate docs'
+
+- script: |
+    npm run deploy
+  displayName: 'deploy to website'

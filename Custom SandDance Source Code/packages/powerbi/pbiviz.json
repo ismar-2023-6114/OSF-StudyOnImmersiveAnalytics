@@ -1,0 +1,25 @@
+{
+    "visual": {
+        "name": "SandDance2019",
+        "displayName": "SandDance 2019",
+        "guid": "SandDance201929976D117A654D0BAB8E96507442D80B",
+        "visualClassName": "Visual",
+        "version": "3.3.0",
+        "description": "Visually explore, understand, and present your data.",
+        "supportUrl": "https://github.com/Microsoft/SandDance/issues",
+        "gitHubUrl": "https://github.com/microsoft/SandDance"
+    },
+    "apiVersion": "3.4.0",
+    "author": {
+        "name": "Microsoft Research VIDA",
+        "email": "msrvida@microsoft.com"
+    },
+    "assets": {
+        "icon": "assets/icon.png"
+    },
+    "externalJS": null,
+    "style": "style/visual.less",
+    "capabilities": "capabilities.json",
+    "dependencies": null,
+    "stringResources": []
+}

@@ -1,0 +1,29 @@
+{
+  "name": "@msrvida/chart-recommender",
+  "version": "3.1.0",
+  "description": "Recommendation engine for SandDance charts",
+  "main": "dist/es5/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/SandDance.git",
+    "directory": "packages/chart-recommender"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@msrvida/sanddance": "^3"
+  },
+  "devDependencies": {
+    "vega": "5.20"
+  },
+  "scripts": {
+    "eslint": "eslint -c ../../.eslintrc.json --fix ./src/**/*.ts*",
+    "test": "mocha",
+    "build-typescript": "tsc -p .",
+    "watch-typescript": "tsc -p . -w",
+    "build:sanddance-core": "npm run build-typescript"
+  },
+  "author": "",
+  "license": "MIT"
+}

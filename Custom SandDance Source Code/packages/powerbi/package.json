@@ -1,0 +1,40 @@
+{
+  "name": "powerbi",
+  "private": true,
+  "scripts": {
+    "eslint": "eslint -c ../../.eslintrc.json --fix ./src/**/*.ts*",
+    "tslint": "tslint -p .",
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "pbiviz": "pbiviz",
+    "start": "pbiviz start",
+    "package": "pbiviz package",
+    "version": "node ./scripts/version.js",
+    "prepackage": "npm run version",
+    "build:sanddance-integration": "tsc -p ."
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.5.5",
+    "@babel/runtime-corejs2": "^7.5.5",
+    "@deck.gl/core": "8.3.7",
+    "@deck.gl/layers": "8.3.7",
+    "@fluentui/react": "^7.111.0",
+    "@luma.gl/core": "^8.2.0",
+    "@msrvida/sanddance-explorer": "^3",
+    "core-js": "3.2.1",
+    "powerbi-models": "^1.6.0",
+    "powerbi-visuals-api": "^3.4.0",
+    "powerbi-visuals-utils-dataviewutils": "^2.4.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "regenerator-runtime": "^0.13.3",
+    "vega": "5.20"
+  },
+  "devDependencies": {
+    "@msrvida/fluentui-react-cdn-typings": "^1",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.7",
+    "powerbi-visuals-tools": "^4",
+    "tslint": "^5.20.1",
+    "tslint-microsoft-contrib": "^6.2.0"
+  }
+}

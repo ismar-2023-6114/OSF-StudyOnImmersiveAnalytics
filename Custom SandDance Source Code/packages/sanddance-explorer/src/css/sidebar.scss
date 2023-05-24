@@ -1,0 +1,115 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT license.
+@mixin sidebar(
+    $bg-color,
+    $dark-bg-color,
+    $toolbar-margin,
+    $toolbar-width,
+    $sidetab-width: 50px
+) {
+    .sanddance-sidebar {
+        background-color: $bg-color;
+        display: grid;
+        overflow: hidden;
+        position: relative;
+        transition: width 350ms cubic-bezier(.4, 0, .2, 1);     //TODO param
+        width: $toolbar-width;
+        &:not(.pinned) {
+            bottom: 0;
+            position: absolute;
+            top: 0;
+        }
+        .sidebar-content {
+            background-color: inherit;
+            display: grid;
+            grid-template-areas:    "stats stats"
+                                    "tabs bar";
+            grid-template-columns: $sidetab-width auto;
+            grid-template-rows: 0fr auto;
+            height: 100%;
+            overflow: hidden;
+            position: absolute;
+            z-index: 1; //appear over the canvas even though it is behind it in the dom.
+        }
+        .vbuttons {
+            background-color: rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-area: tabs;
+            grid-template-rows: auto 0fr;
+            position: relative;
+        }
+        .vbutton {
+            align-self: center;
+            display: grid;
+            height: 60px;
+            &.selected {
+                background-color: $bg-color;
+            }
+            button {
+                height: 100%;
+                width: 100%;
+                .ms-Button-icon {
+                    font-size: 24px;
+                }
+            }
+        }
+        .sidebar-dialogs {
+            .vbutton {
+                height: 16%;
+                max-height: 60px;
+                min-height: 32px;    
+            }
+        }
+        .scrollable-container {
+            width: $toolbar-width - $sidetab-width;
+        }
+        .sidetab {
+            grid-area: bar;
+            padding: $toolbar-margin;
+        }
+        &.closed {
+            width: $sidetab-width;
+        }
+        &.calculator {
+            .calculating {
+                background: rgba($bg-color, 0.5);
+                height: 100%;
+                position: absolute;
+                top: 0;
+                width: 100%;
+            }
+            .ms-Spinner {
+                margin-top: -16px;
+                position: relative;
+                top: 50%;
+            }
+        }
+    }
+    .dark-theme {
+        .sanddance-sidebar {
+            background-color: $dark-bg-color;
+            color: #fff;
+            .vbuttons {
+                background-color: rgba(0, 0, 0, 0.4);
+            }
+            .vbutton {
+                &.selected {
+                    background-color: $dark-bg-color;
+                }
+            }
+            &.calculator {
+                .calculating {
+                    background: rgba($dark-bg-color, 0.5);
+                }
+            }
+        }
+    }
+    .sanddance-chart-type {
+        .ms-ChoiceFieldGroup-flexContainer {
+            display: grid;
+            grid-template-columns: repeat(2, 50%);
+            grid-auto-flow: column;
+            grid-template-rows: repeat(4, auto);
+        }
+    }
+}

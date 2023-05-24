@@ -1,0 +1,13 @@
+{
+  "name": "sanddance-test-umd",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "eslint": "eslint -c ../../.eslintrc.json --fix ./src/**/*.ts*",
+    "build:sanddance-core": "tsc -p .",
+    "watch-typescript": "tsc -p . -w"
+  },
+  "dependencies": {
+    "@msrvida/sanddance": "^3"
+  }
+}
